@@ -69,24 +69,24 @@ module GymJonesParser
         "Foundation High Level 2"         => { days: 28, url: "http://www.gymjones.com/training/plan/foundation-high-level-ii/"},
         "Foundation Rowing Specific"      => { days: 28, url: "http://www.gymjones.com/training/plan/foundation-rowing-specific/"},
         "Marathon Basic"                  => { days: 84, url: "http://www.gymjones.com/training/plan/marathon-base-program/"},
-        "Mass Gain"                        => { days: 28, url: "http://www.gymjones.com/training/plan/mass-gain/"},
-        "Mass Gain 2"                      => { days: 28, url: "http://www.gymjones.com/training/plan/mass-gain-2/"},
-        "Mass Gain Sport Performance"      => { days: 48, url: "http://www.gymjones.com/training/plan/hypertrophy-speed/"},
-        "MMA Mass Gain"                    => { days: 28, url: "http://www.gymjones.com/training/plan/mma-mass-gain/"},
-        "MMA Power Endurance"              => { days: 28, url: "http://www.gymjones.com/training/plan/mma-explosive-power-endurance/"},
-        "MMA Strength"                     => { days: 33, url: "http://www.gymjones.com/training/plan/jiu-jitsu-mma-strength/"},
-        "No Gear"                          => { days: 28, url: "http://www.gymjones.com/training/plan/no-gear/"},
-        "No Gear II"                       => { days: 28, url: "http://www.gymjones.com/training/plan/no-gear-ii/"},
-        "Operator Fitness"                 => { days: 28, url: "http://www.gymjones.com/training/plan/operator-fitness/"},
-        "Operator Fitness II"              => { days: 28, url: "http://www.gymjones.com/training/plan/operator-fitness-ii/"},
-        "Operator Fitness III"             => { days: 28, url: "http://www.gymjones.com/training/plan/operator-fitness-iii/"},
-        "Operator Fitness IV"              => { days: 28, url: "http://www.gymjones.com/training/plan/operator-fitness-iv-strength/"},
-        "Operator Fitness V"               => { days: 28, url: "http://www.gymjones.com/training/plan/operator-fitness-v-power/"},
-        "Power Phase"                      => { days: 28, url: "http://www.gymjones.com/training/plan/power-phase/"},
-        "Repo Men"                         => { days: 28, url: "http://www.gymjones.com/training/plan/repo-men/"},
-        "Strength Phase"                   => { days: 28, url: "http://www.gymjones.com/training/plan/strength-phase/"},
-        "Strength Phase II"                => { days: 28, url: "http://www.gymjones.com/training/plan/strength-phase-ii/"},
-        "Structural Work"                  => { days: 28, url: "http://www.gymjones.com/training/plan/structural-work/"},
+        "Mass Gain"                       => { days: 28, url: "http://www.gymjones.com/training/plan/mass-gain/"},
+        "Mass Gain 2"                     => { days: 28, url: "http://www.gymjones.com/training/plan/mass-gain-2/"},
+        "Mass Gain Sport Performance"     => { days: 48, url: "http://www.gymjones.com/training/plan/hypertrophy-speed/"},
+        "MMA Mass Gain"                   => { days: 28, url: "http://www.gymjones.com/training/plan/mma-mass-gain/"},
+        "MMA Power Endurance"             => { days: 28, url: "http://www.gymjones.com/training/plan/mma-explosive-power-endurance/"},
+        "MMA Strength"                    => { days: 33, url: "http://www.gymjones.com/training/plan/jiu-jitsu-mma-strength/"},
+        "No Gear"                         => { days: 28, url: "http://www.gymjones.com/training/plan/no-gear/"},
+        "No Gear II"                      => { days: 28, url: "http://www.gymjones.com/training/plan/no-gear-ii/"},
+        "Operator Fitness"                => { days: 28, url: "http://www.gymjones.com/training/plan/operator-fitness/"},
+        "Operator Fitness II"             => { days: 28, url: "http://www.gymjones.com/training/plan/operator-fitness-ii/"},
+        "Operator Fitness III"            => { days: 28, url: "http://www.gymjones.com/training/plan/operator-fitness-iii/"},
+        "Operator Fitness IV"             => { days: 28, url: "http://www.gymjones.com/training/plan/operator-fitness-iv-strength/"},
+        "Operator Fitness V"              => { days: 28, url: "http://www.gymjones.com/training/plan/operator-fitness-v-power/"},
+        "Power Phase"                     => { days: 28, url: "http://www.gymjones.com/training/plan/power-phase/"},
+        "Repo Men"                        => { days: 28, url: "http://www.gymjones.com/training/plan/repo-men/"},
+        "Strength Phase"                  => { days: 28, url: "http://www.gymjones.com/training/plan/strength-phase/"},
+        "Strength Phase II"               => { days: 28, url: "http://www.gymjones.com/training/plan/strength-phase-ii/"},
+        "Structural Work"                 => { days: 28, url: "http://www.gymjones.com/training/plan/structural-work/"},
       }
     end
 
@@ -94,13 +94,7 @@ module GymJonesParser
       string = string.gsub(/[ \-]+/i, '-') # No more than one of the separator in a row.
       string = string.gsub(/^\-|\-$/i, '') # Remove leading/trailing separator.
       string = string.downcase
-      string.size.zero? ? random_permalink(string) : string
-    rescue
-      random_permalink(string)
-    end
-
-    def random_permalink(seed = nil)
-      Digest::SHA1.hexdigest("#{seed}#{Time.now.to_s.split(//).sort_by {rand}}")
+      string
     end
   end
 end
