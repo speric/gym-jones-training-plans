@@ -1,4 +1,5 @@
 require 'mechanize'
+require 'urlify'
 
 module GymJonesParser
   LOGIN_PAGE = "https://www.gymjones.com/accounts/login/?next=/"
@@ -40,7 +41,7 @@ module GymJonesParser
       start = Time.now.to_i
       signin!
       knowledge_articles.each do |title, url|
-        nice_title = urlify(title) 
+        nice_title = URLify.urlify title, "-" 
         puts "Starting #{title}"
         page = mechanize_agent.get("#{url}")
         article = page.search(".body")
@@ -210,13 +211,6 @@ module GymJonesParser
         "Foundation Week 1995"                    => "http://www.gymjones.com/knowledge/article/foundation-week-1995/",
         "Recommended Reading"                     => "http://www.gymjones.com/knowledge/article/recommended-reading/",
       }
-    end
-
-    def urlify(string)
-      string = string.gsub(/[ \-]+/i, '-') # No more than one of the separator in a row.
-      string = string.gsub(/^\-|\-$/i, '') # Remove leading/trailing separator.
-      string = string.downcase
-      string
     end
   end
 end

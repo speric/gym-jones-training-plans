@@ -3,6 +3,15 @@
 Saves each training plan to a plain text file in whatever directory the
 script is run from.
 
+Install gems:
+
+```
+$ gem install mechanize
+$ gem install urlify
+```
+
+Open up `irb`:
+
 ```ruby
 require 'parser'
 
